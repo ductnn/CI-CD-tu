@@ -1,2 +1,11 @@
 .vscode
 node_modules
+# cache
+__pycache__/
+
+# env
+.env
+venv
+
+# DB
+*.sqlite3
