@@ -3,10 +3,39 @@ version: '3'
 services:
   jenkins:
     image: jenkins/jenkins:lts
+    container_name: jenkins
     restart: always
+    hostname: 'jenkins.ductn.info'
     ports:
     - "8080:8080"
     - "50000:50000"
     volumes:
       - /var/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - gitlab
+      - sonar
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.ductn.info'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
+  sonar:
+    container_name: sonarqube
+    image: sonarqube
+    restart: always
+    ports:
+        - "9000:9000"
+        - "9092:9092"
+    volumes:
+        - /etc/gitlab
+        - /var/log/gitlab
+        - /var/opt/gitlab
