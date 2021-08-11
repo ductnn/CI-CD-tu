@@ -103,10 +103,26 @@ d5609c0f9f69   jenkins-new:v1   "/sbin/tini -- /usr/…"   18 hours ago   Up 9 s
 339877c8ca20   docker:dind      "dockerd-entrypoint.…"   18 hours ago   Up 5 seconds   2375/tcp, 0.0.0.0:2376->2376/tcp, :::2376->2376/tcp                                        jenkins-docker
 ```
 
-  We need to config `Jenkins` after installation, i don't mention in this post,
-you can follow the configuration jenkins in [here](https://www.jenkins.io/doc/book/installing/linux/)
+  Now, we need to config `Jenkins` after installation, let access the dashboard 
+at `localhost:8080`, and unlock jenkins using password:
 
-  Now, we can access the dashboard at `localhost:8080`
+  <p align="center">
+    <img src="./img/setup.jpeg">
+  </p>
+
+  Follow the tutorial, we can take the password at `/var/lib/jenkins/secrets/initialAdminPassword`
+
+```bash
+CONTAINER ID   IMAGE            COMMAND                  CREATED        STATUS          PORTS                                                                                      NAMES
+d5609c0f9f69   jenkins-new:v1   "/sbin/tini -- /usr/…"   19 hours ago   Up 29 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   jenkins
+339877c8ca20   docker:dind      "dockerd-entrypoint.…"   19 hours ago   Up 29 minutes   2375/tcp, 0.0.0.0:2376->2376/tcp, :::2376->2376/tcp                                        jenkins-docker
+➜  jenkins git:(main) ✗ docker exec -it d5 bash
+jenkins@d5609c0f9f69:/$ cat /var/lib/jenkins/secrets/initialAdminPassword
+YOUR_PASSWORD_IN_HERE
+```
+
+  After unlock jenkins, the Customize Jenkins page appears. We choose `Install suggested plugins`,
+and `Create Admin User`. `Jenkins` ready to use 🤟 🤟 🤟.
 
   <p align="center">
     <img src="./img/jenkins_dashboard.png">
@@ -119,5 +135,9 @@ you can follow the configuration jenkins in [here](https://www.jenkins.io/doc/bo
   </p>
 
   OK Done !!! Thanks you for reading my article 🥰🥰🥰
+
+## References
+* [Docker DinD](https://blog.nestybox.com/2019/09/14/dind.html)
+* [Jenkins](https://www.jenkins.io/)
 
 [me](https://ductn.info/about)
