@@ -44,7 +44,7 @@ the hostname docker within the jenkins network.
   `--volume ~/jenkins-home:/var/jenkins_home`: Mounting volume `jenkins-home` to
 workspace directory of Jenkins.
 
-  **Steps 2**: Deploy container `Jenkins`. We can use command to run container:
+  **Steps 3**: Deploy container `Jenkins`. We can use command to run container:
 
 ```bash
 docker run --name jenkins -d \
