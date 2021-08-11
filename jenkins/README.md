@@ -4,7 +4,11 @@ title: Install Jenkins with Docker
 
 # **Install Jenkins with Docker 🐳 🐳 🐳**
 
-## **Downloading nd running Jnkins on Docker**
+  <p align="center">
+    <img src="./img/jenkins-docker.png">
+  </p>
+
+## **Downloading and running Jenkins on Docker**
 
   The recommended Docker image to use is the Official [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins/)
 image from Docker hub repo. A new [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins/)
